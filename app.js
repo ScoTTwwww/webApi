@@ -32,7 +32,7 @@ var allowCrossDomain = function(req, res, next) {
 
 var app = express();
 app.use('/.well-known', express.static('.well-known'));
- app.get('/.well-known/acme-challenge/:fileid', function(req, res){
+ app.get('.well-known/acme-challenge/:fileid', function(req, res){
   res.send('Requesting '+fileid)
 })
 // view engine setup
