@@ -31,7 +31,7 @@ var allowCrossDomain = function(req, res, next) {
 };
 
 var app = express();
- 
+  app.use('/.well-known', express.static('.well-known'));
  app.get('/.well-known/:fileid', function(req, res){
      res.sendFile(__dirname  + fileid);
 })
