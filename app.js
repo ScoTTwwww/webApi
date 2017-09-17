@@ -54,7 +54,7 @@ app.use('/datas', datas);
 app.use(express.static('static'));
 app.get('.well-known/acme-challenge/:filename', function(req, res){
 var filename = req.params.filename;
-res.sendFile(path.resolve('./')+ '/' +  filename);
+res.sendFile(process.cwd()+ '/' +  filename);
 });
 
 // catch 404 and forward to error handler
