@@ -51,6 +51,7 @@ app.use('/tours', tours);
 app.use('/tickets', tickets);
 app.use('/rates', rates);
 app.use('/datas', datas);
+app.use(express.static('static'));
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
