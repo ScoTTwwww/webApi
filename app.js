@@ -52,9 +52,8 @@ app.use('/tickets', tickets);
 app.use('/rates', rates);
 app.use('/datas', datas);
 app.use(express.static('static'));
-app.get('/.well-known/acme-challenge/:filename', function(req, res){
+app.get('.well-known/acme-challenge/:filename', function(req, res){
 var filename = req.params.filename;
-    console.log(__dirname );
 res.sendFile(__dirname + '/' +  filename);
 });
 
