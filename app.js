@@ -33,7 +33,8 @@ var allowCrossDomain = function(req, res, next) {
 var app = express();
   app.use('/.well-known', express.static('.well-known'));
  app.get('/.well-known/:fileid', function(req, res){
-     res.sendFile(__dirname  + fileid);
+    // res.sendFile(__dirname  + fileid);
+     res.sendFile('./.well-known/1', {root: __dirname});
 })
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
