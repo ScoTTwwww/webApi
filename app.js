@@ -32,10 +32,15 @@ var allowCrossDomain = function(req, res, next) {
 
 var app = express();
   app.use('/.well-known', express.static('.well-known'));
- app.get('/.well-known/:fileid', function(req, res){
+// app.get('/.well-known/:fileid', function(req, res){
     // res.sendFile(__dirname  + fileid);
-     res.sendFile('./.well-known/1', {root: __dirname});
-})
+  //   res.sendFile('./.well-known/1', {root: __dirname});
+//})
+
+app.get('/.well-known', function(req, res) {
+    res.sendFile(path.join(__dirname + '/1'));
+});
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
