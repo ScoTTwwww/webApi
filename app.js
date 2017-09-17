@@ -31,11 +31,10 @@ var allowCrossDomain = function(req, res, next) {
 };
 
 var app = express();
-
-app.get('/.well-known/acme-challenge/:filename', function(req, res){
-var filename = req.params.filename;
-res.sendFile(__dirname + '/' + filename);
-});
+app.use('/.well-known', express.static('.well-known'));
+ app.get('/.well-known/acme-challenge/:fileid', function(req, res){
+  res.send('Requesting '+fileid)
+})
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
