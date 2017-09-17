@@ -31,9 +31,9 @@ var allowCrossDomain = function(req, res, next) {
 };
 
 var app = express();
-app.use('.well-known', express.static('.well-known'));
+app.use('/.well-known', express.static('.well-known'));
  app.get('/.well-known/acme-challenge/:fileid', function(req, res){
-     res.sendFile(__dirname + '/' + fileid);
+     res.sendFile(__dirname  + fileid);
 })
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
