@@ -29,6 +29,25 @@ server.listen(port);
 server.on('error', onError);
 server.on('listening', onListening);
 
+/* * https部分 */
+var httpsapp = require('../app');
+var httpsdebug = require('debug')('my-api-lab:server');
+var https = require('https');
+var fs = require('fs');
+var httpsPort = normalizePort(process.env.PORT || '443');
+var httpsOptions = {
+    key: fs.readFileSync('./ssl/private.key'),
+    cert: fs.readFileSync('./ssl/certificate.crt')
+};
+
+httpsapp.set('port', httpsPort);
+var httpsserver = https.createServer(httpsOptions,httpsapp);
+
+httpsserver.listen(httpsPort);
+httpsserver.on('error', onError);
+httpsserver.on('listening', onListening);
+
+
 /**
  * Normalize a port into a number, string, or false.
  */
